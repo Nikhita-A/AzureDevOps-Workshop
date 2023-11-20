@@ -1,0 +1,28 @@
+parameters: 
+  - name: containerRegistry
+    displayName: Service Connection for docker image
+    type: string
+    default: 'mydockerhub'
+  - name: repository
+    displayName: repository name
+    type: string
+    default: 'shaikkhajaibrahim/azuredevopsnov23'
+
+variables:
+  dockerfilelocation: '**/Dockerfile'
+
+stages:
+  - stage:  build stage
+    displayName: docker image build, package and publish 
+    pool: default
+    jobs:
+      - job: dockerimage_build_package_publish
+        displayName: docker image build, package and publish
+        steps:
+          - task: Docker@2
+            inputs:
+              containerRegistry: ${{ parameters.containerRegistry }}
+              repository: ${{ parameters.repository }}
+              command: buildAndPush
+              Dockerfile: $(dockerfilelocation)
+              tags: $(Build.BuildId)

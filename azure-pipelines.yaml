@@ -1,0 +1,14 @@
+---
+pool: default
+
+trigger: 
+  - master
+
+stages:
+  - template: templates/dockerstage.yaml
+  - template: templates/terraformstage.yaml
+  - template: templates/k8sstage.yaml
+  
+
+  
+

@@ -1,0 +1,21 @@
+parameters:
+  - name: workingDirectory
+    displayName: terraform working folder 
+    type: string
+    default: 'deploy/tf_aws'
+    values:
+      - deploy/tf_azure
+      - deploy/tf_aws
+
+stages:
+  - stage: infra stage
+    displayName: infrastructure using terraform
+    pool: default
+    jobs:
+      - job: terraforminfra
+        displayName: creating infrastructure
+        steps:
+          - bash: |
+              terraform init
+              terraform apply -auto-approve
+            workingDirectory: ${{ parameters.workingDirectory }}

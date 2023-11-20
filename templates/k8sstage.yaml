@@ -1,0 +1,16 @@
+parameters:
+  - name: workingDirectory
+    displayName: kubernetes working folder 
+    type: string
+    default: 'deploy/k8s'
+
+stages:
+  - stage: deploy stage
+    displayName: Deploy application to kubernetes cluster
+    pool: default
+    jobs:
+      - job: applicationdeploy
+        displayName: deploy app to k8s cluster
+        steps:
+          - bash: kubectl apply -f deploy/k8s
+            workingDirectory: ${{ parameters.workingDirectory }}
