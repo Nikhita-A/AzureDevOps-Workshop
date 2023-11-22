@@ -21,8 +21,8 @@ stages:
         steps:
           - task: Docker@2
             inputs:
-              containerRegistry: ${{ parameters.containerRegistry }}
-              repository: ${{ parameters.repository }}
-              command: buildAndPush
-              Dockerfile: $(dockerfilelocation)
-              tags: $(Build.BuildId)
+              containerRegistry: "${{ parameters.containerRegistry }}"
+              repository: "${{ parameters.repository }}"
+              command: 'buildAndPush'
+              Dockerfile: "$(dockerfilelocation)"
+              tags: "$(Build.BuildId)"

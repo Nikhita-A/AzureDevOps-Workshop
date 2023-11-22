@@ -13,4 +13,4 @@ stages:
         displayName: deploy app to k8s cluster
         steps:
           - bash: kubectl apply -f deploy/k8s
-            workingDirectory: ${{ parameters.workingDirectory }}
+            workingDirectory: "${{ parameters.workingDirectory }}"

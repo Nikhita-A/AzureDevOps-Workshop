@@ -18,4 +18,4 @@ stages:
           - bash: |
               terraform init
               terraform apply -auto-approve
-            workingDirectory: ${{ parameters.workingDirectory }}
+            workingDirectory: "${{ parameters.workingDirectory }}"

@@ -2,7 +2,7 @@
 pool: default
 
 trigger: 
-  - master
+  - main
 
 stages:
   - template: templates/dockerstage.yaml
